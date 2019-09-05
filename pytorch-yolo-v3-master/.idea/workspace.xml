@@ -41,6 +41,15 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Kkim\Documents\GitHub\pytorch-yolo-v3-master" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Kkim\Documents\GitHub\pytorch-yolo-v3-master" />
+      <recent name="C:\Users\Kkim\Documents\GitHub\pytorch-yolo-v3-master\cfg" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -53,29 +62,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.detect1">
-    <configuration name="detect" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="pytorch-yolo-v3-master" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/detect.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.detect2">
     <configuration name="detect1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="pytorch-yolo-v3-master" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -142,12 +129,57 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="q" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="pytorch-yolo-v3-master" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/q.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="sehoons" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="pytorch-yolo-v3-master" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sehoons.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.detect1" />
         <item itemvalue="Python.detect2" />
         <item itemvalue="Python.detect3" />
-        <item itemvalue="Python.detect" />
+        <item itemvalue="Python.detect1" />
+        <item itemvalue="Python.sehoons" />
+        <item itemvalue="Python.q" />
       </list>
     </recent_temporary>
   </component>
@@ -163,7 +195,24 @@
       <updated>1567128500122</updated>
       <workItem from="1567128504863" duration="7493000" />
       <workItem from="1567140314959" duration="5214000" />
-      <workItem from="1567156217634" duration="1452000" />
+      <workItem from="1567156217634" duration="9005000" />
+      <workItem from="1567169265371" duration="10614000" />
+      <workItem from="1567238172426" duration="622000" />
+      <workItem from="1567239932428" duration="861000" />
+      <workItem from="1567253439304" duration="1518000" />
+      <workItem from="1567386554314" duration="7238000" />
+      <workItem from="1567403462069" duration="5267000" />
+      <workItem from="1567422072183" duration="4829000" />
+      <workItem from="1567427789213" duration="316000" />
+      <workItem from="1567428448378" duration="2607000" />
+      <workItem from="1567474574413" duration="1849000" />
+      <workItem from="1567476488645" duration="177000" />
+      <workItem from="1567476686829" duration="11205000" />
+      <workItem from="1567508590306" duration="6421000" />
+      <workItem from="1567515547651" duration="695000" />
+      <workItem from="1567563477458" duration="18506000" />
+      <workItem from="1567665356192" duration="7527000" />
+      <workItem from="1567674768893" duration="1656000" />
     </task>
     <servers />
   </component>
@@ -174,17 +223,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/detect3.py</url>
-          <line>78</line>
+          <url>file://$PROJECT_DIR$/detect1.py</url>
+          <line>61</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/pytorch_yolo_v3_master$detect3.coverage" NAME="detect3 Coverage Results" MODIFIED="1567151518055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pytorch_yolo_v3_master$detect2.coverage" NAME="detect2 Coverage Results" MODIFIED="1567151539722" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pytorch_yolo_v3_master$detect1.coverage" NAME="detect1 Coverage Results" MODIFIED="1567152033806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pytorch_yolo_v3_master$detect3.coverage" NAME="detect3 Coverage Results" MODIFIED="1567675298061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pytorch_yolo_v3_master$q.coverage" NAME="q Coverage Results" MODIFIED="1567605421486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pytorch_yolo_v3_master$sehoons.coverage" NAME="sehoons Coverage Results" MODIFIED="1567667401389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pytorch_yolo_v3_master$detect2.coverage" NAME="detect2 Coverage Results" MODIFIED="1567675789909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pytorch_yolo_v3_master$detect1.coverage" NAME="detect1 Coverage Results" MODIFIED="1567672096687" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pytorch_yolo_v3_master$detect.coverage" NAME="detect Coverage Results" MODIFIED="1567151490031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

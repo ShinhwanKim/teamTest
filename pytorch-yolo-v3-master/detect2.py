@@ -53,13 +53,15 @@ def arg_parse():
 
     """
 
-    file = urllib.request.urlretrieve('http://13.124.223.128/image/result_2.jpg', 'result_2.jpg')
+    # file = urllib.request.urlretrieve('http://13.124.223.128/image/result_3.jpg', 'result_3.jpg')
 
     parser = argparse.ArgumentParser(description='YOLO v3 Detection Module')
 
     parser.add_argument("--images", dest='images', help=
     "Image / Directory containing images to perform detection upon",
-                        default="result_2.jpg", type=str)
+                        default="cresult_2_8.jpg", type=str)
+    # default="result_3.jpg", type=str)
+
     parser.add_argument("--det", dest='det', help=
     "Image / Directory to store detections to",
                         default="det", type=str)
@@ -82,20 +84,24 @@ def arg_parse():
 
 
 if __name__ == '__main__':
+
     db = pymysql.connect(host='13.124.223.128', user='chicken',
-                             passwd='Chicken18@', db='db', charset='utf8')
+                         passwd='Chicken18@', db='db', charset='utf8')
     cur = db.cursor()
     while True:
+        # print("qwe")
+        #
+        # while True:
+        #     print("asd")
+        #     sql='select image3 from wait'
+        #     cur.execute(sql)
+        #     re=cur.fetchall()
+        #     print(re[0][0])
+        #     if(re[0][0]==1):
+        #         break
+        #     else :
+        #         db.commit()
 
-        while True:
-            sql='select image2 from wait'
-            cur.execute(sql)
-            re=cur.fetchall()
-            for v in re:
-                if(re[0]==1):
-                    break;
-                else :
-                    db.commit()
         args = arg_parse()
         scales = args.scales
         images = args.images
@@ -108,9 +114,6 @@ if __name__ == '__main__':
 
         person = []
         chair = []
-        db = pymysql.connect(host='13.124.223.128', user='chicken',
-                             passwd='Chicken18@', db='db', charset='utf8')
-        cur = db.cursor()
 
         #        scales = [int(x) for x in scales.split(',')]
         #
@@ -290,7 +293,7 @@ if __name__ == '__main__':
             # img = results[int(x[0])]
             img = int(x[0])
             cls = int(x[-1])
-            if str(format(classes[cls])) == 'chair' or str(format(classes[cls])) == 'person':
+            if (str(format(classes[cls])) == 'chair' or str(format(classes[cls])) == 'person'):
                 label = "{0}".format(classes[cls])
                 name = "" + str(format(classes[cls]))
 
@@ -324,16 +327,16 @@ if __name__ == '__main__':
                 else:
                     # chair.append(str(name)+"/"+str(c1[0])+"/"+str(c1[1])+"/"+str(center_x)+"/"+str(center_y)+"/"+str(width)+"/"+str(height))
                     chair.append(str(name) + "/" + str(c1[0]).replace("tensor(", "").split(",")[0] + "/" +
-                                 str(c1[1]).replace("tensor(", "").split(",")[0] + "/" +
-                                 str(c2[0]).replace("tensor(", "").split(",")[0] + "/" +
-                                 str(c2[1]).replace("tensor(", "").split(",")[0] + "/" +
-                                 str(center_x).replace("tensor(", "").split(",")[0] + "/" +
-                                 str(center_y).replace("tensor(", "").split(",")[0] + "/" +
-                                 str(check_x1).replace("tensor(", "").split(",")[0] + "/" +
-                                 str(check_x2).replace("tensor(", "").split(",")[0] + "/" +
-                                 str(check_y).replace("tensor(", "").split(",")[0] + "/" +
-                                 str(width).replace("tensor(", "").split(",")[0] + "/" +
-                                 str(height).replace("tensor(", "").split(",")[0] + "/" + str(img))
+                                     str(c1[1]).replace("tensor(", "").split(",")[0] + "/" +
+                                     str(c2[0]).replace("tensor(", "").split(",")[0] + "/" +
+                                     str(c2[1]).replace("tensor(", "").split(",")[0] + "/" +
+                                     str(center_x).replace("tensor(", "").split(",")[0] + "/" +
+                                     str(center_y).replace("tensor(", "").split(",")[0] + "/" +
+                                     str(check_x1).replace("tensor(", "").split(",")[0] + "/" +
+                                     str(check_x2).replace("tensor(", "").split(",")[0] + "/" +
+                                     str(check_y).replace("tensor(", "").split(",")[0] + "/" +
+                                     str(width).replace("tensor(", "").split(",")[0] + "/" +
+                                     str(height).replace("tensor(", "").split(",")[0] + "/" + str(img))
 
                 # print(chair) -> ['chair/647/686/1088/943/882/-514', 'chair/1570/942/1743/1068/347/-
 
@@ -341,23 +344,23 @@ if __name__ == '__main__':
 
                 # for i in chair:
                 #     print(str(i)+"\n")
-                # sql="select count(*) as sehoon from posit where seatnumber>3 and seatnumber <=7"
+                # sql="select count(*) as sehoon from posit where seatnumber <=3"
                 # cur.execute(sql)
                 # num=cur.fetchall()
-                # if(int(num[0])!=8):
-                #     sql="delete from posit where seatnumber>3 and seatnumber<=7"
+                # if(int(num[0])!=4):
+                #     sql="delete from posit where seatnumber<=3"
                 #     cur.execute(sql)
                 # else:
                 #     sql = "update posit set positon1X=%s, position1Y=%s, position2X=%s, positio2Y=%s where (position1X>=%s and position1X <%s) and (position2X>=%s and position2X<%s) " \
-                #     "and (position1Y>=%s and position2Y<=%s) and (seatnumber>3 and seatnumber<=7)"
+                #     "and (position1Y>=%s and position2Y<=%s)"
                 #     cur.execute(sql,())
 
                 # key = cv2.waitKey(0)
 
 
         list(map(lambda x: write(x, im_batches, orig_ims), output))
-        chair.sort(key=lambda x: float(x.split("/")[1]))
-        person.sort(key=lambda x: float(x.split("/")[1]))
+        chair.sort(reverse=True, key=lambda x: float(x.split("/")[1]))
+        person.sort(reverse=True, key=lambda x: float(x.split("/")[6]))
         # print(chair)
         for i, v in enumerate(chair):
             label = str(chair[i].split("/")[0] + str(i))
@@ -373,6 +376,7 @@ if __name__ == '__main__':
             width = int(chair[i].split("/")[10])
             height = int(chair[i].split("/")[11])
             img = orig_ims[int(chair[i].split("/")[12])]
+            cv2.line(img,(0,1080),(3000,1080),[0,255,255],20)
 
             cv2.line(img, (Left_x1, Left_y1), (Left_x1, Left_y1), [0, 255, 0], 20)
             cv2.line(img, (Right_x2, Right_y2), (Right_x2, Right_y2), [0, 255, 0], 20)
@@ -388,89 +392,146 @@ if __name__ == '__main__':
             c2 = Left_x1 + t_size[0] + 3, Left_y1 + t_size[1] + 4
             cv2.rectangle(img, (Left_x1, Left_y1), (Left_x1 + (len(label) * 30), Left_y1 + 50), [255, 0, 255], -1)
             cv2.putText(img, label, (Left_x1, Left_y1 + t_size[1] + 30), cv2.FONT_HERSHEY_PLAIN, 3, [225, 255, 255], 3)
+            # cv2.line(img, (0, 350), (3000, 350), [0, 255, 255], 20)
+            # cv2.line(img, (0, 1200), (3000, 1200), [0, 255, 255], 20)
+
             # path = ""
             # cv2.imwrite(os.path.join(path, "1.jpg"), img)
             # sql="insert into jj(c0,c1,c2,c3) values (%s,%s,%s,%s)"
 
-            sql = "update posit set position1X=%s, position1Y =%s, position2X =%s, position2Y =%s where (position1X>=%s and position1X<=%s) and (position2X >= %s and position2X <= %s) " \
-                  "and (position1Y>=%s and position1Y<=%s) and " \
-                  "(position2Y>=%s and position2Y<=%s) and (seatnumber>3 and seatnumber<=7)"
-            cur.execute(sql, ((int(check_x1), (int(Right_y2)),
-                               (int(check_x2)), (int(Right_y2)),
+        ##            sql = "update posit set position1X=%s, position1Y =%s, position2X =%s, position2Y =%s where (position1X>=%s and position1X<=%s) and (position2X >= %s and position2X <= %s) " \
+        ##                "and (position1Y>=%s and position1Y<=%s) and " \
+        #        #       "(position2Y>=%s and position2Y<=%s) and (seatnumber<=3)"
+        #       # cur.execute(sql, ((int(check_x1), (int(Right_y2)),
+        #     #                   (int(check_x2)), (int(Right_y2)),
+        #                       #
+        #                       ## 조건
+        #                       # (int(check_x1 - 100)), (int(check_x1 + 100)),
+        #                       # (int(check_x2 - 100)), (int(check_x2 + 100)),
+        #                       #
+        #                       # (int(Right_y2 - 200)), (int(Right_y2 + 200)),
+        #                       # (int(Right_y2 - 200)), (int(Right_y2 + 200)))))
+        #
+        #     #
+        #     sql = "insert posit values(%s,%s,%s,%s,%s,%s,%s)"
+        #     cur.execute(sql, (i+4,str(int(Left_x1)), str(int(check_y)),
+        #                       str(int(Right_x2)), str(int(check_y)), 0,0))
+        #
 
-                               # 조건
-                               (int(check_x1 - 100)), (int(check_x1 + 100)),
-                               (int(check_x2 - 100)), (int(check_x2 + 100)),
+        # sql = "update posit set check_=0 where seatnumber <=3"
+        # cur.execute(sql)
 
-                               (int(Right_y2 - 200)), (int(Right_y2 + 200)),
-                               (int(Right_y2 - 200)), (int(Right_y2 + 200)))))
-            print("시작")
+        # 사람의 객체가 잡히지 않았다면 0으로 초기화
+        if len(person) == 0:
+            update_sql = "update posit set check_=0,count=0 where seatnumber <=7 and seatnumber >3"
+            cur.execute(update_sql)
+        else:
 
-            print(str(check_x1) + " " + str(Right_y2))
-            print(str(check_x2) + " " + str(Right_y2))
-            print("")
-            print("조건")
-            print(str(int(check_x1) - 100) + " " + str(int(check_x1 + 100)))
-            print(str(int(check_x2 - 100)) + " " + str(int(check_x2 + 100)))
-            print("")
-            print(str(int(Right_y2 - 100)) + " " + str(int(Right_y2 + 100)))
-            print(str(int(Right_y2 - 100)) + " " + str(int(Right_y2 + 100)))
-            print("끝")
-            #
-            # sql = "insert posit values(%s,%s,%s,%s,%s,%s)"
-            # cur.execute(sql, (i+4,str(int(check_x1)), str(int(Right_y2)),
-            #                   str(int(check_x2)), str(int(Right_y2)), 0))
-
-        sql = "update posit set check_=0 where seatnumber>3 and seatnumber<=7"
-        cur.execute(sql)
-        for i, v in enumerate(person):
-            label = str(person[i].split("/")[0] + str(i))
-            Left_x1 = int(person[i].split("/")[1])
-            Left_y1 = int(person[i].split("/")[2])
-            Right_x2 = int(person[i].split("/")[3])
-            Right_y2 = int(person[i].split("/")[4])
-            center_x = int(person[i].split("/")[5])
-            center_y = int(person[i].split("/")[6])
-            check_x1 = int(person[i].split("/")[7])
-            check_x2 = int(person[i].split("/")[8])
-            check_y = int(person[i].split("/")[9])
-            width = int(person[i].split("/")[10])
-            height = int(person[i].split("/")[11])
-            img = orig_ims[int(person[i].split("/")[12])]
-
-            # print(img)
-            cv2.rectangle(img, (Left_x1, Left_y1), (Right_x2, Right_y2), [0, 255, 0], 4)
-            # cv2.rectangle(img, (Left_x1,Left_y1), (Right_x2,Right_y2), [255,0,0], -1)
-            cv2.line(img, (check_x1, check_y), (check_x1, check_y), [0, 0, 255], 10)
-            cv2.line(img, (check_x2, check_y), (check_x2, check_y), [0, 0, 255], 10)
-            cv2.line(img, (center_x, center_y), (center_x, center_y), [0, 255, 0], 15)
-            #
-            t_size = cv2.getTextSize(label, cv2.FONT_HERSHEY_PLAIN, 1, 1)[0]
-            c2 = Left_x1 + t_size[0] + 3, Left_y1 + t_size[1] + 4
-            cv2.rectangle(img, (Left_x1, Left_y1), (Left_x1 + (len(label) * 30), Left_y1 + 50), [255, 0, 255], -1)
-            cv2.putText(img, label, (Left_x1, Left_y1 + t_size[1] + 30), cv2.FONT_HERSHEY_PLAIN, 3, [225, 255, 255], 3)
-            path = ""
-            # cv2.imwrite(os.path.join(path, "1.jpg"), img)
-            sql = "select * from posit where (seatnumber>3 and seatnumber<=7)"
+            sql = "select * from posit where seatnumber <=7 and seatnumber >3"
             cur.execute(sql)
             result = cur.fetchall()
-            for i, re in enumerate(result):
-                print("쿼리문")
-                if ((int(re[1]) <= int(center_x) and int(center_x) <= int(re[3])) and int(Right_y2) >= int(re[4])):
-                    cv2.putText(img, "있음", (center_x + 10, center_y + 50), cv2.FONT_HERSHEY_PLAIN, 3, [225, 255, 255],
-                                3)
-                    # plt.text(center_x + 7, center_y + 50, "(있음)",color=str("w"), size="7")
-                    sql = "update posit set check_=1 where seatnumber=%s"
-                    print("갱신")
-                    cur.execute(sql, (int(re[0])))
-                    break
+            for j, re in enumerate(result):
+                for i, v in enumerate(person):
 
-        det_names = pd.Series(imlist).apply(lambda x: "{}/det_{}".format(args.det, x.split("/")[-1]))
+                    print("ㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍ")
+                    label = str(person[i].split("/")[0] + str(i))
+                    Left_x1 = int(person[i].split("/")[1])
+                    Left_y1 = int(person[i].split("/")[2])
+                    Right_x2 = int(person[i].split("/")[3])
+                    Right_y2 = int(person[i].split("/")[4])
+                    center_x = int(person[i].split("/")[5])
+                    center_y = int(person[i].split("/")[6])
+                    check_x1 = int(person[i].split("/")[7])
+                    check_x2 = int(person[i].split("/")[8])
+                    check_y = int(person[i].split("/")[9])
+                    width = int(person[i].split("/")[10])
+                    height = int(person[i].split("/")[11])
+                    img = orig_ims[int(person[i].split("/")[12])]
+
+                    # cv2.line(img, (0, 350), (3000, 350), [0, 255, 255], 20)
+                    # cv2.line(img, (0, 800), (3000, 800), [0, 255, 255], 20)
+                    # print(img)
+                    cv2.rectangle(img, (Left_x1, Left_y1), (Right_x2, Right_y2), [0, 255, 0], 4)
+                    # cv2.rectangle(img, (Left_x1,Left_y1), (Right_x2,Right_y2), [255,0,0], -1)
+                    cv2.line(img, (check_x1, check_y), (check_x1, check_y), [0, 0, 255], 10)
+                    cv2.line(img, (check_x2, check_y), (check_x2, check_y), [0, 0, 255], 10)
+                    cv2.line(img, (center_x, center_y), (center_x, center_y), [0, 255, 0], 15)
+                    #
+                    t_size = cv2.getTextSize(label, cv2.FONT_HERSHEY_PLAIN, 1, 1)[0]
+                    c2 = Left_x1 + t_size[0] + 3, Left_y1 + t_size[1] + 4
+                    cv2.rectangle(img, (Left_x1, Left_y1), (Left_x1 + (len(label) * 30), Left_y1 + 50), [255, 0, 255],
+                                  -1)
+                    cv2.putText(img, label, (Left_x1, Left_y1 + t_size[1] + 30), cv2.FONT_HERSHEY_PLAIN, 3,
+                                [225, 255, 255], 3)
+                    path = ""
+
+                    # cv2.imwrite(os.path.join(path, "1.jpg"), img)
+
+                    #if 초기 의자의 x축 안에 사람이있을 경우
+                        #if y좌표가 초기 1/5좌표 하단에 있고 하드코딩한 y좌표보다 밑에있을경우 무조건 앉아있음
+                        #else y좌표가 하드코딩한 좌표보타 클경우 전 db랑 비교함
+                    if (int(re[1]) <= int(center_x) and int(center_x) <= int(re[3])):
+                        # 의자의 x축 안에 사람의 중점 좌표가 있을경우
+                        print("ㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍ 1")
+                        if int(Right_y2) >= int(re[4]) and int(Left_y1) >= 1080:
+                            # and int(Left_y1) >= 500:
+                            print("ㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍ 1 1")
+                            # 위 조건을 만족하며 y축 이하에 사람의 하단 좌표가 존재할 경우
+                            cv2.putText(img, "True", (center_x + 10, center_y + 50), cv2.FONT_HERSHEY_PLAIN, 5,
+                                        [0, 0, 255], 5)
+                            update_sql = "update posit set check_=1,count=0 where seatnumber=" + str(re[0])
+                            cur.execute(update_sql)
+                            # 위 조건을 만족하면 다른 사람을 비교하지 않아도됨
+                            break
+                        # elif int(Left_y1) <= 800 :
+                        #     update_sql = "update posit set check_=0,count=0 where seatnumber=" + str(re[0])
+                        #     cur.execute(update_sql)
+                        #     break
+
+                        elif (int(Right_y2) >= int(re[4])):
+                            # 의자의 x축안에 사람의 중점좌표가 있지만 y축을 벗어난경우
+                            print("ㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍ1 2")
+                            check = re[5]
+                            if (int(check) == 1):
+                                print("ㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍ1 2 1")
+                                count = re[6]
+                                if (int(count) == 1):
+                                    print("ㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍ 1 2 1 1")
+                                    update_sql = "update posit set check_=0,count=0 where seatnumber=" + str(re[0])
+                                    cur.execute(update_sql)
+                                    break
+                                else:
+                                    print("ㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍ 1 2 1 2")
+                                    update_sql = "update posit set count=" + str(
+                                        int(count) + 1) + " where seatnumber=" + str(re[0])
+                                    cur.execute(update_sql)
+                                    break
+                            else:
+                                print("ㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍ 1 2")
+                                update_sql = "update posit set check_=0,count=0 where seatnumber=" + str(re[0])
+                                cur.execute(update_sql)
+                                # break
+                        else:
+                            update_sql = "update posit set count =0, check_=0 where seatnumber = " + str(re[0])
+                            cur.execute(update_sql)
+
+
+                    else:
+                        print("ㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍ 2")
+                        if (int(i) == int(len(person) - 1)):
+                            print("ㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍㅍ 2 1")
+                            update_sql = "update posit set check_=0,count=0 where seatnumber=" + str(re[0])
+                            cur.execute(update_sql)
+                            break
+
+        det_names = pd.Series(imlist).apply(lambda x: "{}/det_{}".format(args.det, x.split("\\")[-1]))
 
         list(map(cv2.imwrite, det_names, orig_ims))
-        cv2.imwrite(os.path.join("", "2.jpg"), img)
+        # cv2.imwrite(os.path.join("", str(det_names)+".jpg"), img)
 
         end = time.time()
+        sql = "update wait set image2=0"
+        cur.execute(sql)
         db.commit()
 
         print()
@@ -487,9 +548,5 @@ if __name__ == '__main__':
         print("----------------------------------------------------------")
 
         torch.cuda.empty_cache()
-
-
-
-
 
 
