@@ -59,7 +59,7 @@ def arg_parse():
 
     parser.add_argument("--images", dest='images', help=
     "Image / Directory containing images to perform detection upon",
-                        default="result_1_2.jpg", type=str)
+                        default="result_1.jpg", type=str)
     # default="result_3.jpg", type=str)
 
     parser.add_argument("--det", dest='det', help=
