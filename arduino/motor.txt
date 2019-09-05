@@ -1,0 +1,83 @@
+#include <Arduino.h>
+#include <Servo.h>
+
+#include <ESP8266WiFi.h>
+#include <ESP8266WiFiMulti.h>
+
+#include <ESP8266HTTPClient.h>
+
+#include <WiFiClient.h>
+
+ESP8266WiFiMulti WiFiMulti;
+Servo servo;
+
+int Servo_Pin = 2;
+int min_value = 544;
+int max_value = 2400;
+
+int value=0;
+int next_value=90;
+int first=0;
+
+void setup() {
+  Serial.begin(9600);
+
+  servo.attach(Servo_Pin,min_value,max_value); //D4
+  
+  servo.write(0);
+
+  WiFi.mode(WIFI_STA);
+  WiFiMulti.addAP("TEAMNOVA_2G", "03NOVA8911");
+  //WiFiMulti.addAP("teamnova04_2G", "04teamnova8911");
+  //WiFiMulti.addAP("kkimV50", "123123123");
+}
+
+void loop() {
+  if((WiFiMulti.run() == WL_CONNECTED)){
+    //와이파이 연결 완료
+    WiFiClient client;
+    HTTPClient http;
+    http.begin(client,"http://13.124.223.128/camera.php");
+    http.addHeader("Content-Type","application/x-www-form-urlencoded");
+    if(first==0){
+      first=1;
+      Serial.println("최초 카메라 찍기");
+      http.POST("CHECK=1&VALUE=11");
+    }else{
+      int httpCode = http.GET();
+      if(httpCode == HTTP_CODE_OK){
+        String str = http.getString();
+        if(str=="0"){
+          if(value==0){
+            next_value=90;
+          }else if(value==90){
+            next_value=180;
+          }else if(value==180){
+            next_value=0;
+          }
+          if(next_value!=0){
+            for(value;value<next_value;value++){
+              servo.write(value);
+              delay(15);
+            }
+          }else{
+            for(value;value>next_value;value--){
+              servo.write(value);
+              delay(15);
+            }
+          }
+          if(value==90){
+            http.POST("CHECK=1&VALUE=90");
+          }else if(value==180){
+            http.POST("CHECK=1&VALUE=180");
+          }else if(value==0){
+            http.POST("CHECK=1&VALUE=11");
+          }
+        }
+      }
+    }
+    delay(1000);
+    Serial.println(value);
+    Serial.println(next_value);
+  } 
+}
